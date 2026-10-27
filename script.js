@@ -53,7 +53,7 @@ var roads = L.geoJSON(roadsData, {
     }
 }).addTo(map);
 
-//adding points is slightly different from adding polygons and lines. You need to use the pointToLayer option to specify how to create a marker for each point feature. In this case, I am using circle markers with a specific style for each layer.
+//adding points is slightly different from adding polygons and lines. I need to use the pointToLayer option to specify how to create a marker for each point feature. In this case, I am using circle markers with a specific style for each layer.
 //Tanks
 var tanksStyle = {
     radius: 6,
@@ -131,6 +131,36 @@ var overlayMaps = {
 };
 
 L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+//scale
+L.control.scale({metric: true}).addTo(map);
+
+//Legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML = '<b>Legend</b><br>' +
+        '<i class="box" style="border: 2px solid #000"></i>UP Farm Area of Interest<br>' +
+        '<i class="box" style="background: orange"></i>Buildings<br>' +
+        '<i class="line" style="background: blue"></i>Irrigation<br>' +
+        '<i class="line" style="background: brown"></i>Road<br>' +
+        '<i class="circle" style="background: blue"></i>Tank (JoJo)<br>' +
+        '<i class="circle" style="background: yellow"></i>Sensor<br>' +
+        '<i class="circle" style="background: green"></i>Tree';
+    return div;
+};
+legend.addTo(map);
+
+//North arrow
+var north = L.control({position: 'topleft'});
+
+north.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'north');
+    div.innerHTML = '<b>^</b><br>N';
+    return div;
+};
+north.addTo(map);
 
 
 
