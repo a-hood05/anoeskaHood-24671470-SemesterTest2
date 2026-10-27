@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dashboard</title>
+  <title>2D Dashboard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></link>
-  <link rel="stylesheet" href="style.css"></link>
-  </head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
+    <header>
+        <h1>2D Map @ UP Farm Collected data</h1>
+    </header>
 
-    <div class="topnav">
-        <h1>UNIVERSITY OF PRETORIA HILLCREST SMART CAMPUS</h1>
-        <input type="text" placeholder="Search..">
+    <div class="container">
+        <!--A side panel with info to give it a dashboard vibe-->
+        <div id="panel">
+            <h2>Statistics count</h2>
+        
+            <!--Represent stats in cards-->
+            <div class="card">
+                <span class="number" id="statsBuildings">0</span>
+                <span class="label">Buildings</span>
+            </div>
+
+            <div class="card">
+                <span class="number" id="statsSensors">0</span>
+                <span class="label">Sensors</span>
+            </div>
+
+            <div class="card">
+                <span class="number" id="statsTrees">0</span>
+                <span class="label">Trees</span>
+            </div>
+
+            <!--To give it more functionality, include a filter for buildings with gutter-->
+            <h2>Building Filter</h2>
+            <label for="gutterFilter">Gutters:</label>
+            <select id="gutterFilter">
+                <option value="all">All buildings</option>
+                <option value="yes">With gutter</option>
+                <option value="no">Without gutter</option>
+            </select>
+        </div>
+
+        <!--Map-->
+         <div id="map"></div>
+  
     </div>
 
-    <div id="map"></div>
+    <!--Leaflet js-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!--Link all scripts-->
+    <script src="data/building_projected.js"></script>
+    <script src="data/irrigation_projected.js"></script>
+    <script src="data/rainwater_tank_projected.js"></script>
+    <script src="data/sensor_projected.js"></script>
+    <script src="data/tree_projected.js"></script>
+    <script src="data/UP_farm_aoi.js"></script>
+    <script src="data/up_farm_raods.js"></script>
 
-<script src="data/building_projected.js"></script>
-
-<script src="script.js"></script>
+    <!--My js-->
+    <script src="script.js"></script>
 
 </body>
 </html>
