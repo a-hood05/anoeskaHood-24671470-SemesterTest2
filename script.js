@@ -1,3 +1,4 @@
+//Anoeska Hood u24671470
 //add map
 var map = L.map('map').setView([-30, 25], 13);
 
@@ -7,7 +8,7 @@ var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
     attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
 }).addTo(map);
 
-//Popup function
+//Popup function so that it shows for every layer but skips empty values
 function makepopup (title, properties) {
     var html = '<b>' + title + '</b><br>'
     for (var key in properties) {
@@ -18,6 +19,7 @@ function makepopup (title, properties) {
     return html;
 }
 
+//added my data layers to the map and added popups to each layer using the makepopup function created above. The popups will show the title of the layer and the properties of the feature that was clicked on.
 //Data layers
 //Farm aoi
 var aoi = L.geoJSON(Farm_aoi, {
@@ -51,6 +53,7 @@ var roads = L.geoJSON(roadsData, {
     }
 }).addTo(map);
 
+//adding points is slightly different from adding polygons and lines. You need to use the pointToLayer option to specify how to create a marker for each point feature. In this case, I am using circle markers with a specific style for each layer.
 //Tanks
 var tanksStyle = {
     radius: 6,
@@ -108,10 +111,26 @@ var trees = L.geoJSON(treesData, {
     }
 }).addTo(map);
 
-//Zoom to layers when you open the map
+//Zoom to layers when you open the map that makes it more convienient.
 map.fitBounds(aoi.getBounds());
 
+//Layer controls (toggle between layers)
+var baseMaps = {
+    //"OpenStreetMap": osm,
+    "OpenStreetMap.HOT": osmHOT
+};
 
+var overlayMaps = {
+    "UP Farm Area of Interest": aoi,
+    "Buildins": buildings,
+    "Irrigation": irrigation,
+    "Road": roads,
+    "Tank (JoJo)": tanks,
+    "Sensor": sensors,
+    "Tree": trees
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
 
