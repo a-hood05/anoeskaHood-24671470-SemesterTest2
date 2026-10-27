@@ -7,9 +7,25 @@ var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
     attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
 }).addTo(map);
 
+//add layers
+//add building
+var building = L.geoJSON(buildingsData, {
+    style: {color: "black", fillOpacity: 0.8, fillColor: "orange"},
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup("Building", feature.properties);
+    }
+}).addTo(map);
+
 //control
 var baseMaps = {
     "OpenStreetMap.HOT": osmHOT
 };
 
-L.control.layers(baseMaps).addTo(map);
+var overlayMaps = {
+    "Building": building
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+
