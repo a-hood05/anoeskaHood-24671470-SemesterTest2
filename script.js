@@ -7,16 +7,7 @@ var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
     attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
 }).addTo(map);
 
-//Popup function
-function makepopup (title, properties) {
-    var html = '<b>' + title + '</b><br>'
-    for (var key in properties) {
-        if (properties[key] != null) {
-            html += key + ': ' + properties[key] + '<br>'
-        }
-    }
-    return html;
-}
+
 
 //Data layers
 //Farm aoi
@@ -108,8 +99,6 @@ var trees = L.geoJSON(treesData, {
     }
 }).addTo(map);
 
-//Zoom to layers when you open the map
-map.fitBounds(aoi.getBounds());
 
 
 
