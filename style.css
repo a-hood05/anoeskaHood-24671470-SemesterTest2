@@ -1,63 +1,27 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+/* Add a black background color to the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #416491;
 }
 
-header h1{
-    padding: 10px 16px;
-    font-size: 22px;
-    margin: 0;
-    background-color: rgb(64, 67, 87);
-    color: white;
+.topnav h1 {
+  float: left;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  font-size: 17px;
 }
 
-.container {
-    height: calc(100vh - 47px);
-    display: flex;
-}
-
-#panel{
-    width: 250px;
-    background: rgb(236, 236, 233);
-    padding: 12px;
-}
-
-#panel h2 {
-    font-size: 18px;
-    color: rgb(18, 92, 162);
-}
-
-.card {
-    background: white;
-    padding: 8px;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-#gutterFilter{
-    width: 100%;
-    padding: 8px;
-    margin-top: 3px;
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
 }
 
 #map { 
+    height: calc(100vh - 47px); 
     flex: 1;
-    height: 100%; 
 }
-
-.legend, .north {
-    background: white;
-    padding: 6px 8px;
-    border-radius: 5px;
-    box-shadow: 0 1px 4px black;
-}
-
-.legend i {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    margin-right: 6px;
-}
-
-.legend .circle { border-radius: 50%; }
-.legend .line   { height: 4px; }
